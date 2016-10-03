@@ -61,7 +61,7 @@ app.on('ready', () => {
         if (!win.isVisible()) {
             win.show()
         } else {
-            app.hide()
+            app.emit('hide-window'); // Let the window hide the app
         }
     })
 

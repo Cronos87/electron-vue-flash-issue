@@ -21,8 +21,12 @@ new Vue({
         ]
     },
     created: function() {
+        var vm = this;
         window.addEventListener('keyup', this.onKeyUp);
-        win.on('hide', this.reset)
+        app.on('hide-window', function () {
+          vm.reset();
+          setTimeout(app.hide, 10);
+        });
     },
     computed: {
         testsFiltered() {
@@ -39,7 +43,8 @@ new Vue({
         },
         onKeyUp(event) {
             if (event.keyCode === 27) {
-                app.hide()
+                this.reset()
+                setTimeout(app.hide, 10);
             }
         }
     }
